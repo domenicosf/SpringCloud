@@ -1,0 +1,32 @@
+server:
+  port: 8012
+
+spring:
+  application:
+    name: ConfigServer
+  devtools:
+    restart:
+      enabled: true
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: file:///d:/workspace/SpringCloud/FilesConfigServer
+        git:
+          uri: https://github.com/domenicosf/Configuration
+          username: domenicosf
+          password:
+          clone-on-start: true
+  profiles:
+    active: native
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh

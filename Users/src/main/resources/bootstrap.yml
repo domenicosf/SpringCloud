@@ -1,0 +1,5 @@
+spring:
+  cloud:
+    config:
+      name: users-ws
+      uri: http://localhost:8012

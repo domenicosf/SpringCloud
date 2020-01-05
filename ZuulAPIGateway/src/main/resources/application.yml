@@ -1,0 +1,49 @@
+server:
+  port: 8011
+
+spring:
+  application:
+    name: zuul
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+eureka:
+  client:
+    service-url: http://localhost:8010/eureka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: beans,health,routes,httptrace
+
+api:
+  h2console:
+    url:
+      path: /users-ws/h2-console/**
+  registration:
+    url:
+      path: /users-ws/users
+  login:
+    url:
+      path: /users-ws/users/login
+  users:
+    actuator:
+      url:
+        path: /users-ws/actuator/*
+  zuul:
+    actuator:
+      url:
+        path: /actuator/*
+
+authorization:
+  token:
+    header:
+      name: Authorization
+      prefix: Bearer
+
+token:
+  secret: hfgry463hf746hf573ydh475fhy5739
