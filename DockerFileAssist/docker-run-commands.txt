@@ -1,3 +1,11 @@
 docker run -d -p 3306:3306 --name mysql-docker-container -e MYSQL_ROOT_PASSWORD=test -e MYSQL_DATABASE=app -e MYSQL_USER=test -e MYSQL_PASSWORD=test mysql:8.0.18
 
 docker run -d --name rabbitmq-management -p 15672:15672 -p 5672:5672 -p 15671:15671 -p 5671:5671 -p 4369:4369 rabbitmq:3-management
+
+keytool -genkeypair -alias apiEncryptionKey -keyalg RSA \
+  -dname "CN=Web Server,OU=Unit,O=Organization,L=Sao Paulo,S=SP,C=BR" \
+  -keypass 1q2w3e4r -keystore apiEncryptionKey.jks -storepass 1q2w3e4r
+
+O armazenamento de chaves JKS usa um formato proprietário. É recomendada a migração para PKCS12, que é um formato de padrão industrial que usa:
+
+keytool -importkeystore -srckeystore apiEncryptionKey.jks -destkeystore apiEncryptionKey.jks -deststoretype pkcs12

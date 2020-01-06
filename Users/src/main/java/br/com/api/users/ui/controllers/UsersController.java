@@ -20,8 +20,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
  import br.com.api.users.ui.model.UserResponseModel;
-import com.appsdeveloperblog.photoapp.api.users.service.*;
-import com.appsdeveloperblog.photoapp.api.users.shared.*;
 
 @RestController
 @RequestMapping("/users")

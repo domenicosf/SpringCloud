@@ -1,5 +1,5 @@
 encrypt:
   key-store:
-    location: file:///d:/workspace/SpringCloud/FilesConfigServer/apiEncryptionKey.jks
+    location: file://Users/mac/Documents/workspace/SpringCloud/FilesConfigServer/apiEncryptionKey.jks
     password: 1q2w3e4r
     alias: apiEncryptionKey

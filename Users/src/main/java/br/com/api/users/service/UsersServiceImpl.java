@@ -22,8 +22,6 @@ import org.springframework.stereotype.Service;
 
 import br.com.api.users.shared.UserDto;
 
-import com.appsdeveloperblog.photoapp.api.users.data.*;
-
 @Service
 public class UsersServiceImpl implements UsersService {
 	
