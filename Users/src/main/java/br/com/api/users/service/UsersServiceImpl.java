@@ -46,11 +46,13 @@ public class UsersServiceImpl implements UsersService {
 	}
  
 	@Override
-	public UserDto createUser(UserDto userDetails) {
+	public UserDto createOrUpdateUser(UserDto userDetails) {
 		// TODO Auto-generated method stub
-		
-		userDetails.setUserId(UUID.randomUUID().toString());
-		userDetails.setEncryptedPassword(bCryptPasswordEncoder.encode(userDetails.getPassword()));
+
+		if(userDetails.getUserId().isEmpty())
+			userDetails.setUserId(UUID.randomUUID().toString());
+		if(userDetails.getEncryptedPassword().isEmpty())
+			userDetails.setEncryptedPassword(bCryptPasswordEncoder.encode(userDetails.getPassword()));
 		
 		ModelMapper modelMapper = new ModelMapper(); 
 		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
@@ -76,10 +78,7 @@ public class UsersServiceImpl implements UsersService {
 	@Override
 	public UserDto getUserDetailsByEmail(String email) { 
 		UserEntity userEntity = usersRepository.findByEmail(email);
-		
 		if(userEntity == null) throw new UsernameNotFoundException(email);
-		
-		
 		return new ModelMapper().map(userEntity, UserDto.class);
 	}
 
@@ -108,7 +107,9 @@ public class UsersServiceImpl implements UsersService {
 		return userDto;
 	}
 	
-	
+	public Long deleteUserByEmail(String email){
+		return usersRepository.deleteByEmail(email);
+	}
 	
 
 }

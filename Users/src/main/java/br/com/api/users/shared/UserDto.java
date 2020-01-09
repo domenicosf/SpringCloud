@@ -10,7 +10,8 @@ public class UserDto implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -953297098295050686L;
-	
+
+    private long id;
 	private String firstName;
 	private String lastName;
 	private String email;
@@ -18,7 +19,14 @@ public class UserDto implements Serializable {
 	private String userId;
 	private String encryptedPassword;
 	private List<AlbumResponseModel> albums;
-	
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
 	public String getFirstName() {
 		return firstName;
